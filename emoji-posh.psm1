@@ -3,11 +3,9 @@ function prompt
     $origLastExitCode = $?
     $arrows = '>'
     $colon = ':'
-
-    if ( $origLastExitCode -eq $True ){
-      $finger = '👉'
-      $face = '😎'
-    }
+    $finger = '👉'
+    $face = '😎'
+    
     if ( $origLastExitCode -eq $False ){
       $face = '😠'
       $finger = '🔔'
