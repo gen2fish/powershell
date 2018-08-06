@@ -126,7 +126,7 @@ Process{
     $final = $dst
     
     if ($final) {
-      $final | ? {$_.Description} | ForEach-Object{
+      $final | Where-Object {$_.Description} | ForEach-Object{
         $obj = "" | Select-Object Host,NR,Description,Status,Uptime
         $obj.Host = $_.Host
         $obj.NR = $_.NR
