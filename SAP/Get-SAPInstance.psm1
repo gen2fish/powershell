@@ -48,7 +48,7 @@ function Get-SAPInstance {
   
   Begin {
     function GetSystemInstanceList($instance){
-      $URL = 'http://'+$Name+':5'+$instance+'13?wsdl'
+      $URL = 'http://'+$Name+':5'+$instance+'13t?wsdl'
       $proxy = Invoke-WebRequest -Uri $URL -Method Post -Body $SOAPRequest -ContentType "text/xml"
       $testxml = [XML]($proxy.RawContent.Split([Environment]::NewLine) | Select-String -Pattern "<SOAP-ENV:Envelope xmlns")
       $xml2 = [XML]($testxml.Envelope.Body.GetSystemInstanceListResponse.instance.OuterXml)
@@ -156,41 +156,41 @@ function Get-SAPProcessList {
     .EXAMPLE
     PS C:\Users\Administrator> Get-SAPInstance hhd-tys4hx01 | Get-SAPProcessList
 
-Host        : hhd-tys4hx01
-NR          : 00          
-Description : Dispatcher
-Status      : GREEN
-Uptime      : 117:50:45
+    Host        : hhd-tys4hx01
+    NR          : 00          
+    Description : Dispatcher
+    Status      : GREEN
+    Uptime      : 117:50:45
 
-Host        : hhd-tys4hx01
-NR          : 00
-Description : IGS Watchdog
-Status      : GREEN
-Uptime      : 117:50:45
+    Host        : hhd-tys4hx01
+    NR          : 00
+    Description : IGS Watchdog
+    Status      : GREEN
+    Uptime      : 117:50:45
 
-Host        : hhd-tys4hx01
-NR          : 00
-Description : Gateway
-Status      : GREEN
-Uptime      : 117:50:14
+    Host        : hhd-tys4hx01
+    NR          : 00
+    Description : Gateway
+    Status      : GREEN
+    Uptime      : 117:50:14
 
-Host        : hhd-tys4hx01
-NR          : 00
-Description : ICM
-Status      : GREEN
-Uptime      : 117:50:14
+    Host        : hhd-tys4hx01
+    NR          : 00
+    Description : ICM
+    Status      : GREEN
+    Uptime      : 117:50:14
 
-Host        : hhd-tys4hx01
-NR          : 01
-Description : MessageServer
-Status      : GREEN 
-Uptime      : 117:50:57
+    Host        : hhd-tys4hx01
+    NR          : 01
+    Description : MessageServer
+    Status      : GREEN 
+    Uptime      : 117:50:57
 
-Host        : hhd-tys4hx01
-NR          : 01
-Description : EnqueueServer
-Status      : GREEN
-Uptime      : 117:50:57
+    Host        : hhd-tys4hx01
+    NR          : 01
+    Description : EnqueueServer
+    Status      : GREEN
+    Uptime      : 117:50:57
 
     Gets the Instance List from hhd-tys4hx01 then all processes for all found SAP Systems
     
