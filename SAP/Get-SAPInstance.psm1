@@ -156,37 +156,41 @@ function Get-SAPProcessList {
     .EXAMPLE
     PS C:\Users\Administrator> Get-SAPInstance hhd-tys4hx01 | Get-SAPProcessList
 
-    Host        : hhd-tys4hx01                                                                                                                                                      NR          : 00                                                                                                                                                                
-    Description : Dispatcher
-    Status      : GREEN
-    Uptime      : 105:54:46
+Host        : hhd-tys4hx01
+NR          : 00          
+Description : Dispatcher
+Status      : GREEN
+Uptime      : 117:50:45
 
-    Host        : hhd-tys4hx01
-    NR          : 00
-    Description : IGS Watchdog
-    Status      : GREEN
-    Uptime      : 105:54:46
+Host        : hhd-tys4hx01
+NR          : 00
+Description : IGS Watchdog
+Status      : GREEN
+Uptime      : 117:50:45
 
-    Host        : hhd-tys4hx01
-    NR          : 00
-    Description : Gateway
-    Status      : GREEN
-    Uptime      : 105:54:15
+Host        : hhd-tys4hx01
+NR          : 00
+Description : Gateway
+Status      : GREEN
+Uptime      : 117:50:14
 
-    Host        : hhd-tys4hx01
-    NR          : 00
-    Description : ICM
-    Status      : GREEN
-    Uptime      : 105:54:15
+Host        : hhd-tys4hx01
+NR          : 00
+Description : ICM
+Status      : GREEN
+Uptime      : 117:50:14
 
-    Host        : hhd-tys4hx01                                                                                                                                                      NR          : 01                                                                                                                                                                Description : MessageServer                                                                                                                                                     Status      : GREEN                                                                                                                                                             
-    Uptime      : 105:54:59
+Host        : hhd-tys4hx01
+NR          : 01
+Description : MessageServer
+Status      : GREEN 
+Uptime      : 117:50:57
 
-    Host        : hhd-tys4hx01
-    NR          : 01
-    Description : EnqueueServer
-    Status      : GREEN
-    Uptime      : 105:54:59
+Host        : hhd-tys4hx01
+NR          : 01
+Description : EnqueueServer
+Status      : GREEN
+Uptime      : 117:50:57
 
     Gets the Instance List from hhd-tys4hx01 then all processes for all found SAP Systems
     
@@ -240,7 +244,7 @@ function Get-SAPProcessList {
     try {
       $dst = GetProcessList($disp)
     } catch {
-      Write-Host "Nothing found on $Name $disp"
+      Write-Host "$Error - Nothing found on $Name $disp"
     }
 
     $final = $dst
