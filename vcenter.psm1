@@ -1,13 +1,19 @@
 
 function Connect-VCenter {
-  Param($vcenter)
+  Param($vcenter)  
   switch ($vcenter) {
     'tmna' { $creds = $hitachims }
     'trp' { $creds = $oxyana }
+    'tx1' { $creds = $oxyana }
     'nj1' { $creds = $ucp }
     'sj1' { $creds = $ucp }
     'ocl' { $creds = $ucp }
   }
+  
+  if (!$creds){
+    $creds = $oxyana
+  }
+
   $vcenter = "vcenter-$vcenter"
   Connect-VIServer $vcenter -Credential $creds
 }

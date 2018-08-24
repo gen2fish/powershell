@@ -48,7 +48,7 @@ function Get-SAPInstance {
   
   Begin {
     function GetSystemInstanceList($instance){
-      $URL = 'http://'+$Name+':5'+$instance+'13t?wsdl'
+      $URL = 'http://'+$Name+':5'+$instance+'13?wsdl'
       $proxy = Invoke-WebRequest -Uri $URL -Method Post -Body $SOAPRequest -ContentType "text/xml"
       $testxml = [XML]($proxy.RawContent.Split([Environment]::NewLine) | Select-String -Pattern "<SOAP-ENV:Envelope xmlns")
       $xml2 = [XML]($testxml.Envelope.Body.GetSystemInstanceListResponse.instance.OuterXml)
@@ -239,7 +239,12 @@ function Get-SAPProcessList {
       $NR = 0
     }
 
-    $disp = '0'+$NR.ToString()
+    if ( $NR -gt 9){
+      $disp = $NR.ToString()
+    } else {
+      $disp = '0'+$NR.ToString()
+    }
+
     $SOAPRequest = _GetSOAP('GetProcessList')
     try {
       $dst = GetProcessList($disp)
