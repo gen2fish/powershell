@@ -1,15 +1,15 @@
 
 function Connect-VCenter {
-  Param($vcenter)  
+  Param($vcenter)
   switch ($vcenter) {
-    'tmna' { $creds = $hitachims }
+    'tmna' { $creds = $oxyana }
     'trp' { $creds = $oxyana }
     'tx1' { $creds = $oxyana }
     'nj1' { $creds = $ucp }
     'sj1' { $creds = $ucp }
     'ocl' { $creds = $ucp }
   }
-  
+
   if (!$creds){
     $creds = $oxyana
   }
@@ -32,7 +32,7 @@ function Disconnect-VCenter {
     Disconnect-VIServer $vcenter -Confirm:$false
     Write-Host "Disconnected from $vcenter"
   }
-  
+
 }
 
 
